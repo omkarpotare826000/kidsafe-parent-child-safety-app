@@ -26,31 +26,33 @@ export default function ParentDashboard() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
-      <header className="bg-white dark:bg-gray-800 shadow-sm border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <header className="bg-white dark:bg-gray-800 shadow-sm border-b sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-2 sm:py-4">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 sm:gap-4">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-base sm:text-xl lg:text-2xl font-bold text-gray-900 dark:text-white truncate">
                 👨‍👩‍👧‍👦 Kidsafe Band
               </h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Welcome back, {user?.name}
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 truncate">
+                Welcome, {user?.name}
               </p>
             </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="secondary" className="text-sm">
-                <Users className="w-4 h-4 mr-1" />
-                {pairedChildren} Child{pairedChildren !== 1 ? 'ren' : ''}
+            <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+              <Badge variant="secondary" className="text-xs h-6 sm:h-7">
+                <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                <span className="hidden sm:inline">{pairedChildren} Child{pairedChildren !== 1 ? 'ren' : ''}</span>
+                <span className="sm:hidden">{pairedChildren}</span>
               </Badge>
               {unacknowledgedAlerts > 0 && (
-                <Badge variant="destructive" className="text-sm animate-pulse">
-                  <Bell className="w-4 h-4 mr-1" />
-                  {unacknowledgedAlerts} Alert{unacknowledgedAlerts !== 1 ? 's' : ''}
+                <Badge variant="destructive" className="text-xs h-6 sm:h-7 animate-pulse">
+                  <Bell className="w-3 h-3 sm:w-4 sm:h-4 mr-1" />
+                  <span className="hidden sm:inline">{unacknowledgedAlerts} Alert{unacknowledgedAlerts !== 1 ? 's' : ''}</span>
+                  <span className="sm:hidden">{unacknowledgedAlerts}</span>
                 </Badge>
               )}
-              <Button variant="outline" onClick={logout}>
-                <LogOut className="w-4 h-4 mr-2" />
-                Logout
+              <Button variant="outline" onClick={logout} size="sm" className="h-6 sm:h-9 text-xs sm:text-sm">
+                <LogOut className="w-3 h-3 sm:w-4 sm:h-4 sm:mr-2" />
+                <span className="hidden sm:inline">Logout</span>
               </Button>
             </div>
           </div>
@@ -58,53 +60,57 @@ export default function ParentDashboard() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-5 lg:w-auto lg:inline-grid">
-            <TabsTrigger value="map" className="gap-2">
-              <MapPin className="w-4 h-4" />
-              Live Map
+      <main className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-3 sm:py-6 lg:py-8">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-3 sm:space-y-6">
+          <TabsList className="grid w-full grid-cols-5 h-auto p-1">
+            <TabsTrigger value="map" className="flex-col gap-0.5 sm:gap-1 py-1.5 sm:py-2 px-1 sm:px-3 text-xs sm:text-sm">
+              <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Live Map</span>
+              <span className="sm:hidden">Map</span>
             </TabsTrigger>
-            <TabsTrigger value="pairing" className="gap-2">
-              <Users className="w-4 h-4" />
-              Pairing
+            <TabsTrigger value="pairing" className="flex-col gap-0.5 sm:gap-1 py-1.5 sm:py-2 px-1 sm:px-3 text-xs sm:text-sm">
+              <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Pairing</span>
+              <span className="sm:hidden">Pair</span>
             </TabsTrigger>
-            <TabsTrigger value="zones" className="gap-2">
-              <Shield className="w-4 h-4" />
-              Safe Zones
+            <TabsTrigger value="zones" className="flex-col gap-0.5 sm:gap-1 py-1.5 sm:py-2 px-1 sm:px-3 text-xs sm:text-sm">
+              <Shield className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Safe Zones</span>
+              <span className="sm:hidden">Zones</span>
             </TabsTrigger>
-            <TabsTrigger value="health" className="gap-2">
-              <Activity className="w-4 h-4" />
-              Health Data
+            <TabsTrigger value="health" className="flex-col gap-0.5 sm:gap-1 py-1.5 sm:py-2 px-1 sm:px-3 text-xs sm:text-sm">
+              <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="hidden sm:inline">Health Data</span>
+              <span className="sm:hidden">Health</span>
             </TabsTrigger>
-            <TabsTrigger value="alerts" className="gap-2">
-              <Bell className="w-4 h-4" />
-              Alerts
+            <TabsTrigger value="alerts" className="flex-col gap-0.5 sm:gap-1 py-1.5 sm:py-2 px-1 sm:px-3 text-xs sm:text-sm relative">
+              <Bell className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span>Alerts</span>
               {unacknowledgedAlerts > 0 && (
-                <Badge variant="destructive" className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                <Badge variant="destructive" className="absolute -top-1 -right-1 h-4 w-4 p-0 flex items-center justify-center text-[10px] sm:text-xs">
                   {unacknowledgedAlerts}
                 </Badge>
               )}
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="map" className="space-y-6">
+          <TabsContent value="map" className="space-y-3 sm:space-y-6 mt-3 sm:mt-6">
             <MapView />
           </TabsContent>
 
-          <TabsContent value="pairing" className="space-y-6">
+          <TabsContent value="pairing" className="space-y-3 sm:space-y-6 mt-3 sm:mt-6">
             <PairingInterface />
           </TabsContent>
 
-          <TabsContent value="zones" className="space-y-6">
+          <TabsContent value="zones" className="space-y-3 sm:space-y-6 mt-3 sm:mt-6">
             <SafeZoneManager />
           </TabsContent>
 
-          <TabsContent value="health" className="space-y-6">
+          <TabsContent value="health" className="space-y-3 sm:space-y-6 mt-3 sm:mt-6">
             <HealthDashboard />
           </TabsContent>
 
-          <TabsContent value="alerts" className="space-y-6">
+          <TabsContent value="alerts" className="space-y-3 sm:space-y-6 mt-3 sm:mt-6">
             <AlertsPanel />
           </TabsContent>
         </Tabs>

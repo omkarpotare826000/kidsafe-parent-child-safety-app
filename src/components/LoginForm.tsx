@@ -46,29 +46,29 @@ export default function LoginForm() {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold text-center">
+    <Card className="w-full max-w-md mx-2 sm:mx-0">
+      <CardHeader className="space-y-1 p-4 sm:p-6">
+        <CardTitle className="text-xl sm:text-2xl font-bold text-center">
           {isSignup ? 'Create Account' : 'Welcome Back'}
         </CardTitle>
-        <CardDescription className="text-center">
+        <CardDescription className="text-center text-xs sm:text-sm">
           {isSignup
             ? 'Sign up to start using Kidsafe Band'
             : 'Sign in to your Kidsafe Band account'}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <CardContent className="p-4 sm:p-6">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
           {error && (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertDescription>{error}</AlertDescription>
+            <Alert variant="destructive" className="py-2">
+              <AlertCircle className="h-3 w-3 sm:h-4 sm:w-4" />
+              <AlertDescription className="text-xs sm:text-sm">{error}</AlertDescription>
             </Alert>
           )}
 
           {isSignup && (
-            <div className="space-y-2">
-              <Label htmlFor="name">Full Name</Label>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="name" className="text-xs sm:text-sm">Full Name</Label>
               <Input
                 id="name"
                 type="text"
@@ -76,12 +76,13 @@ export default function LoginForm() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
+                className="h-9 sm:h-10 text-sm"
               />
             </div>
           )}
 
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="email" className="text-xs sm:text-sm">Email</Label>
             <Input
               id="email"
               type="email"
@@ -89,11 +90,12 @@ export default function LoginForm() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="h-9 sm:h-10 text-sm"
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="password" className="text-xs sm:text-sm">Password</Label>
             <Input
               id="password"
               type="password"
@@ -101,18 +103,19 @@ export default function LoginForm() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="h-9 sm:h-10 text-sm"
             />
           </div>
 
           {isSignup && (
-            <div className="space-y-2">
-              <Label>I am a</Label>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label className="text-xs sm:text-sm">I am a</Label>
               <div className="grid grid-cols-2 gap-2">
                 <Button
                   type="button"
                   variant={role === 'parent' ? 'default' : 'outline'}
                   onClick={() => setRole('parent')}
-                  className="w-full"
+                  className="w-full h-9 sm:h-10 text-xs sm:text-sm"
                 >
                   👨‍👩‍👧‍👦 Parent
                 </Button>
@@ -120,7 +123,7 @@ export default function LoginForm() {
                   type="button"
                   variant={role === 'child' ? 'default' : 'outline'}
                   onClick={() => setRole('child')}
-                  className="w-full"
+                  className="w-full h-9 sm:h-10 text-xs sm:text-sm"
                 >
                   👧 Child
                 </Button>
@@ -128,11 +131,11 @@ export default function LoginForm() {
             </div>
           )}
 
-          <Button type="submit" className="w-full" disabled={loading}>
+          <Button type="submit" className="w-full h-9 sm:h-10 text-sm" disabled={loading}>
             {loading ? 'Please wait...' : isSignup ? 'Sign Up' : 'Sign In'}
           </Button>
 
-          <div className="text-center text-sm">
+          <div className="text-center text-xs sm:text-sm">
             <button
               type="button"
               onClick={() => {

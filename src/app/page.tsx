@@ -13,13 +13,13 @@ function AppContent() {
 
   if (!user) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-purple-600 to-pink-500 flex items-center justify-center p-2 sm:p-4">
         <div className="w-full max-w-6xl">
-          <div className="text-center mb-8">
-            <h1 className="text-5xl font-bold text-white mb-3 drop-shadow-lg">
+          <div className="text-center mb-4 sm:mb-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 drop-shadow-lg">
               👨‍👩‍👧‍👦 Kidsafe Band
             </h1>
-            <p className="text-xl text-white/90 drop-shadow">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 drop-shadow">
               Keep your family safe and connected
             </p>
           </div>

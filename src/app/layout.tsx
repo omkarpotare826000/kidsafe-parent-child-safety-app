@@ -7,6 +7,12 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Kidsafe Band - Family Safety & Location Tracking",
   description: "Keep your family safe with real-time location tracking, safe zones, and emergency alerts",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+  },
 };
 
 export default function RootLayout({

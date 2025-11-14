@@ -1,3 +1,8 @@
+/* Updated: 2025-11-14T03:12:28.700Z */
+/* Updated: 2025-11-13T15:08:52.786Z */
+/* Updated: 2025-11-13T14:48:14.823Z */
+/* Updated: 2025-11-13T11:01:56.106Z */
+/* Updated: 2025-11-13T10:53:57.236Z */
 /* Updated: 2025-11-13T09:52:12.105Z */
 @import "tailwindcss";
 @import "tw-animate-css";
@@ -119,6 +124,52 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  
+  /* Smartwatch optimizations (Samsung Watch 6: 450x450, Firebolt: typically 200-400px) */
+  @media (max-width: 450px) {
+    html {
+      font-size: 14px;
+    }
+    
+    /* Ensure touch targets are at least 44px for accessibility */
+    button, a, input, select, textarea {
+      min-height: 44px;
+      touch-action: manipulation;
+    }
+    
+    /* Improve readability on small screens */
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  }
+  
+  /* Extra small smartwatch screens */
+  @media (max-width: 300px) {
+    html {
+      font-size: 12px;
+    }
+    
+    :root {
+      --radius: 0.375rem;
+    }
+  }
+  
+  /* Prevent text inflation on mobile */
+  body {
+    text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Better tap highlighting */
+  * {
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
